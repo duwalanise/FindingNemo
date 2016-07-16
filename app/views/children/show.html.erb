@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @child.name %>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @child.birth_date %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @child.gender %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @child.language %>
+</p>
+
+<p>
+  <strong>Father name:</strong>
+  <%= @child.father_name %>
+</p>
+
+<p>
+  <strong>Father phone:</strong>
+  <%= @child.father_phone %>
+</p>
+
+<p>
+  <strong>Mother name:</strong>
+  <%= @child.mother_name %>
+</p>
+
+<p>
+  <strong>Mother phone:</strong>
+  <%= @child.mother_phone %>
+</p>
+
+<p>
+  <strong>Voter:</strong>
+  <%= @child.voter_id %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @child.address %>
+</p>
+
+<p>
+  <strong>Dist character:</strong>
+  <%= @child.dist_character %>
+</p>
+
+<p>
+  <strong>Disability status:</strong>
+  <%= @child.disability_status %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @child.photo %>
+</p>
+
+<p>
+  <strong>Finger print:</strong>
+  <%= @child.finger_print %>
+</p>
+
+<p>
+  <strong>Issue date:</strong>
+  <%= @child.issue_date %>
+</p>
+
+<p>
+  <strong>Issuer:</strong>
+  <%= @child.issuer %>
+</p>
+
+<%= link_to 'Edit', edit_child_path(@child) %> |
+<%= link_to 'Back', children_path %>

@@ -1,0 +1,81 @@
+<%= form_for(@child) do |f| %>
+  <% if @child.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+
+      <ul>
+      <% @child.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %><br>
+    <%= f.date_select :birth_date %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :language %><br>
+    <%= f.text_field :language %>
+  </div>
+  <div class="field">
+    <%= f.label :father_name %><br>
+    <%= f.text_field :father_name %>
+  </div>
+  <div class="field">
+    <%= f.label :father_phone %><br>
+    <%= f.number_field :father_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_name %><br>
+    <%= f.text_field :mother_name %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_phone %><br>
+    <%= f.number_field :mother_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :voter_id %><br>
+    <%= f.text_field :voter_id %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :dist_character %><br>
+    <%= f.text_area :dist_character %>
+  </div>
+  <div class="field">
+    <%= f.label :disability_status %><br>
+    <%= f.text_area :disability_status %>
+  </div>
+  <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.text_field :photo %>
+  </div>
+  <div class="field">
+    <%= f.label :finger_print %><br>
+    <%= f.text_field :finger_print %>
+  </div>
+  <div class="field">
+    <%= f.label :issue_date %><br>
+    <%= f.date_select :issue_date %>
+  </div>
+  <div class="field">
+    <%= f.label :issuer %><br>
+    <%= f.text_field :issuer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
