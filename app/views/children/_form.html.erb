@@ -45,27 +45,21 @@
     <div class="col-xs-12">
       <div class="form-group">
        <div class="field">
-         <table style="width:50%">
-           <tr>
-             <td>
-              <%= f.label :gender %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= f.label :gender, "Male", :value => "male"  %>
-              <%= f.radio_button :gender, true %>
-            </td>
-            <td>
-              <%= f.label :gender, "Female", :value => "female" %>
-              <%= f.radio_button :gender, false%>
-            </td>
-            <td>
-              <%= f.label :gender, "Others", :value => "female" %>
-              <%= f.radio_button :gender, false %>
-            </td>
-          </tr>
-        </table>
+        <%= f.label :gender %>
+        <div class="row">
+          <div class="col-xs-3">
+            <%= f.radio_button :gender, true %>
+            <%= f.label :gender, "Male", :value => "male"  %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.radio_button :gender, true %>
+            <%= f.label :gender, "Female", :value => "female"  %>
+          </div>
+          <div class="col-xs-3">
+            <%= f.radio_button :gender, true %>
+            <%= f.label :gender, "Other", :value => "other"  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -95,7 +89,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-12">
+  <div class="col-xs-12" style="display:none">
     <div class="form-group">
       <div class="field">
         <%= f.label "Phone Number" %><br>
@@ -104,7 +98,7 @@
         <span class="input-group-addon">
           <span class="glyphicon glyphicon-earphone"></span>
         </span>
-        <%= f.number_field :father_phone, :class => "form-control" %>
+        <%= f.number_field :father_phone, :class => "form-control", :value => 123%>
       </div>
     </div>
   </div>
@@ -124,7 +118,7 @@
 <div class="col-xs-12">
   <div class="form-group">
     <div class="field">
-      <%= f.label "Phone Number" %><br>
+      <%= f.label "Parent's Contact" %><br>
     </div>
     <div class="input-group">
      <span class="input-group-addon">
@@ -156,9 +150,15 @@
      <span class="input-group-addon">
       <span class="glyphicon glyphicon-home"></span>
     </span>
-    <%= f.text_field :address, :class => "form-control" %>
+    <%= f.text_field :address, :id => "address", :class => "form-control" %>
   </div>
 </div>
+</div>
+
+<div class="col-xs-12">
+  <div class="row">
+    <div id="map"></div>
+  </div>
 </div>
 <div class="col-xs-12">
   <div class="form-group">
@@ -172,7 +172,7 @@
   <div class="form-group">
     <div class="field">
       <%= f.label :disability_status %><br>
-      <%= f.select :disability_status, [["None", "None"], ["Speech", "Speech"], ["Hearing", "Hearing"], ["Visually Impaired", "Visually Impaired"], ["Mentally Challenged", "Mentally Challenged"]] %>
+      <%= f.select(:disability_status, [["None", "None"], ["Speech", "Speech"], ["Hearing", "Hearing"], ["Visually Impaired", "Visually Impaired"], ["Mentally Challenged", "Mentally Challenged"]], {}, {:class => "form-control"})  %>
     </div>
   </div>
 </div>    
@@ -202,6 +202,13 @@
 </div>
 </div>
 </div> 
+<div class="col-xs-12">
+    <div class="form-group">
+     <div class="actions">  
+      <%= f.submit :class => "btn btn-primary", :value => "Submit Form"%>
+    </div>
+  </div>
+</div>
 
 
 </div>
@@ -220,39 +227,54 @@
         <div class="photo_wrapper"></div>
       </div>
       </br>
-      
         <input type="button" value="Retake Photo" id='retake_snap' class='btn btn-info'>
-      
     </div>
   </div>
 </div>
 </div>
 </div>
-
-<div class="wrapper">
-  <div class="row">
-    <div class="col-xs-7">
-      <div class="row">
-<!-- <div class="col-xs-12">
-  <div class="form-group">
-    <div class="field">
-      <%= f.label :photo %><br>
-      <%= f.text_field :photo %>
-    </div>
-  </div>
-</div> -->
-</div>
-</div>
-<div class="col-xs-5">
-  <div class="col-xs-12">
-    <div class="form-group">
-     <div class="actions">  
-      <%= f.submit :class => "btn btn-primary", :value => "Submit Form"%>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
-</div>
+<script>
+    var map, geocoder, infowindow;
+    var marker;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: 28.3949, lng: 84.1240}
+      });
+      geocoder = new google.maps.Geocoder;
+      infowindow = new google.maps.InfoWindow;
+       marker = new google.maps.Marker({
+        map: map
+      });
+      map.addListener('click', function(e) {
+        placeMarkerAndPanTo(e.latLng);
+        geocodeLatLng(e.latLng);
+      });
+    }
+    function geocodeLatLng(latlng) {
+        var input = latlng.lat() +", " + latlng.lng();
+        console.log(latlng);
+        console.log(input);
+        var latlngStr = input.split(',', 2);
+        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+              document.getElementById('address').value = results[1].formatted_address;
+              console.log(results);
+              console.log(results[1].formatted_address);
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      }
+    function placeMarkerAndPanTo(latLng) {
+      marker.setPosition(latLng)
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMfUAZ-Ons--xfug9GmvCa7bNi5Caz_6E&callback=initMap"
+    async defer></script>
 <% end %>

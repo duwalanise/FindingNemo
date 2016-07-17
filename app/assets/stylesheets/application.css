@@ -18,6 +18,19 @@
  	background:#d9edf7; 
  }
 
+.user_logout {
+	padding-top: 10px;
+	text-align: center;
+}
+
+.user_logout p {	
+	color: #0b7cc2;
+}
+.user_logout a:hover {	
+	background-color: inherit;
+	color: white;
+}
+
  .example1 {
 			height: 50px;	
 			overflow: hidden;

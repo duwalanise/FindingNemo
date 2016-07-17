@@ -16,7 +16,7 @@ nav h1 {
 }
 
 #my_camera video{
-	background:#D3D3D3;
+	background:#f8f8f8;
 	border: 2px solid #A9A9A9;
 	border-radius: 5px;
 }
@@ -24,8 +24,8 @@ nav h1 {
 #my_photo .photo_wrapper{
 	width:400px;
 	height: 400px;
-	background:#D3D3D3;
-	border: 2px solid #A9A9A9;
+	background:#f8f8f8;
+	border: 2px solid #c;
 	border-radius: 5px;
 	padding: 47px 0;
 }
@@ -33,4 +33,12 @@ nav h1 {
 #base64image{
 	height: 295px;
 	width: 396px;
+}
+
+#map {
+	border: solid 2px #A9A9A9;
+	margin: auto;
+	margin-bottom: 10px;
+	height: 400px;
+	width: 90%;
 }
