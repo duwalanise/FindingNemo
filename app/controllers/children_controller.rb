@@ -4,11 +4,10 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index        
-    @children = Child.all
+    # @children = Child.all
+    redirect_to "/children/new"
   end
 
-  # GET /children/1
-  # GET /children/1.json
   def show
   end
 
@@ -17,12 +16,9 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
-  # GET /children/1/edit
   def edit
   end
 
-  # POST /children
-  # POST /children.json
   def create
     @child = Child.new(child_params)
 

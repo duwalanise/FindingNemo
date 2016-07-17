@@ -13,7 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree
-<%= javascript_include_tag "https://js.stripe.com/v1/" %>
-<%= javascript_include_tag "application" %>
-
+//= require_tree .
