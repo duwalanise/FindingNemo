@@ -3,11 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-	display: block;
+	display:  block;
 }
 
-.wrapper {
-	width : 70%;
-	display: block;
+nav h1 {
+	text-align: center;
+}
+
+.wrapper{
+	width: 60%;
 	margin: auto;
+}
+
+#my_camera video{
+	background:#D3D3D3;
+	border: 2px solid #A9A9A9;
+	border-radius: 5px;
+}
+ 
+#my_photo .photo_wrapper{
+	width:400px;
+	height: 400px;
+	background:#D3D3D3;
+	border: 2px solid #A9A9A9;
+	border-radius: 5px;
+	padding: 47px 0;
+}
+
+#base64image{
+	height: 295px;
+	width: 396px;
 }

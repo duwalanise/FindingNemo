@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Findbulu</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<title>Findbulu</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<div class="navbar navbar-default", style="background:#d9edf7">
-<p class="navbar-text pull-right">
-	<% if user_signed_in? %>
-	  Logged in as <strong><%= current_user.email %></strong>. |
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-	<% else %>
-	<% end %>
-	</p>
-	</div>
+	<nav class="navbar navbar-default navbar-fixed-top" >
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-1">
+					<img src="https://finishabolition.files.wordpress.com/2015/05/logo-1.png?w=700" width="auto" height= "60px"/>
+				</div>
+				<div class="col-xs-9 example1">
+				<h3 style="color:#0177c0"> NEW LIGHT CHILD REGISTRATION SYSTEM</h3>
+				</div>
+				<div class="col-xs-2">
+					<p class="pull-right" style="display:inline;">
+						<% if user_signed_in? %>
+						<strong><%= current_user.email %></strong>. |
+						<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+						<% else %>
+						<% end %>
+					</p>
+				</div>
+			</div>
+		</div>
+	</nav>
 </head>
 <body>
 
-<%= yield %>
+	<%= yield %>
 
 </body>
 </html>
